@@ -119,7 +119,7 @@ export default function Home() {
   const ficha = [
     [site.flight.durationLabel, "de voo, conforme o dia"],
     [`${site.limits.maxWeightKg} kg`, "peso máximo do passageiro"],
-    [`${site.limits.minAge} anos`, "idade mínima, com documento"],
+    [`${site.limits.minAge} anos`, "idade mínima, na presença dos pais"],
     [
       `${instructor.yearsOfExperience}+`,
       `anos de voo do ${instructor.name}`,

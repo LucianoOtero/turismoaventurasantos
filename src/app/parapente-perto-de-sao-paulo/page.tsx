@@ -76,7 +76,7 @@ export default function PertoDeSaoPaulo() {
       <H2>Quem pode voar</H2>
       <P>
         Peso máximo de {site.limits.maxWeightKg} kg e idade mínima de{" "}
-        {site.limits.minAge} anos, com autorização do responsável para menores.
+        {site.limits.minAge} anos, na presença dos pais ou responsável legal.
         As demais respostas estão em <A href="/duvidas">dúvidas</A>.
       </P>
 

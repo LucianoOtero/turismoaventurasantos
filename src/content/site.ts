@@ -58,7 +58,7 @@ export const site = {
     maxWeightKg: 130,
     minAge: 10,
     minorsRule:
-      "Menores de 18 anos voam acompanhados do responsável legal, que assina a autorização. Idade mínima: 10 anos, com documento.",
+      "A idade mínima é 10 anos, na presença dos pais ou responsável legal, que assina a autorização.",
     phoneRule: "Por segurança, não é permitido levar o celular no voo.",
     clothing:
       "Roupa confortável e tênis ou calçado com solado emborrachado. É proibido traje de banho e chinelo, sandália ou papete.",
@@ -143,7 +143,7 @@ export const site = {
   ],
 
   safetyRules: [
-    "Idade mínima para Voo de Introdução: 10 anos, com apresentação de documento.",
+    "Idade mínima para Voo de Introdução: 10 anos, na presença dos pais ou responsável legal, com apresentação de documento.",
     "É PROIBIDO trajes de banho (sunga, biquíni…) e calçados inadequados (chinelo, sandália, papete…).",
     "É OBRIGATÓRIO o uso de tênis ou calçado com solado emborrachado.",
     "O voo tem duração de até 10 minutos, conforme condições meteorológicas, momento da decolagem e movimento na rampa.",

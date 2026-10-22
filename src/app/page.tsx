@@ -22,6 +22,7 @@ import galeria4 from "@/assets/fotos/galeria-4.jpeg";
 import galeria5 from "@/assets/fotos/galeria-5.jpeg";
 import galeria6 from "@/assets/fotos/galeria-6.jpeg";
 import heroRampa from "@/assets/fotos/hero-rampa.jpg";
+import heroRampaVertical from "@/assets/fotos/hero-rampa-vertical.jpg";
 import ilhaPraia from "@/assets/fotos/ilha-praia.jpg";
 import montanha from "@/assets/fotos/montanha.webp";
 
@@ -105,12 +106,13 @@ export default function Home() {
         <div className="relative bg-ink text-white md:flex md:min-h-[min(100svh,90rem)] md:flex-col">
           <section className="relative flex min-h-[min(100svh,54rem)] flex-col justify-end md:static md:min-h-0 md:flex-1">
             <HeroPicture
-              mobile={heroRampa}
+              mobile={heroRampaVertical}
               desktop={heroRampa}
               alt="Rampa de voo livre no Morro do Itararé"
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover object-center"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/60 to-sky/20" />
+            {/* Overlay mais leve: legibilidade do texto sem “apagar” a foto */}
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-ink/10" />
             <div className="relative mx-auto w-full max-w-7xl px-5 pb-10 pt-32 md:pb-16">
               <p className="t-label text-sun">{site.name}</p>
               <h1 className="t-hero mt-4 max-w-[16ch]">{site.tagline}</h1>

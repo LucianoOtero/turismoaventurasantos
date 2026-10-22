@@ -1,0 +1,170 @@
+@import "tailwindcss";
+
+/*
+ * Identidade Turismo Aventura Santos:
+ * — cores do site atual (#0f4c81, #4ba3c3, #f47d4c, #f9a03f, #ffd166)
+ * — tipografia nova: Bricolage Grotesque (títulos) + Manrope (texto)
+ *   (substitui Archivo condensada dos sites-irmã)
+ */
+@theme {
+  --color-ink: #0f4c81;
+  --color-ink-soft: #1a5f9a;
+  --color-paper: #ffffff;
+  --color-fog: #e8f2f8;
+  --color-sky: #4ba3c3;
+  --color-signal: #f47d4c;
+  --color-signal-soft: #f9a03f;
+  --color-signal-ink: #2a1408;
+  --color-sun: #ffd166;
+  --color-muted: #4a667a;
+  --color-rule: rgba(15, 76, 129, 0.16);
+  --color-rule-inv: rgba(255, 255, 255, 0.22);
+
+  --font-sans: var(--font-text), ui-sans-serif, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  letter-spacing: 0.005em;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-signal);
+  outline-offset: 2px;
+}
+
+/*
+ * Escala tipográfica TAS — títulos em caixa normal (não all-caps),
+ * display com personalidade; corpo legível e calmo.
+ *
+ *   t-hero       42 → 76 px
+ *   t-h2         30 → 46 px
+ *   t-statement  24 → 34 px
+ *   t-figure     40 → 56 px
+ *   t-stat       26 → 34 px
+ *   t-h3         20 px
+ *   t-lead       19 px
+ *   (corpo)      17 px
+ *   t-small      14 px
+ *   t-label      12 px  (único rótulo em caixa alta)
+ */
+@layer components {
+  .t-hero,
+  .t-h2,
+  .t-figure,
+  .t-stat,
+  .t-statement,
+  .t-h3 {
+    font-family: var(--font-display), ui-sans-serif, sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .t-hero {
+    font-size: clamp(2.625rem, 6vw, 4.75rem);
+    line-height: 1.02;
+    font-weight: 800;
+  }
+
+  .t-h2 {
+    font-size: clamp(1.875rem, 3.4vw, 2.875rem);
+    line-height: 1.08;
+  }
+
+  .t-figure {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+    line-height: 1;
+    font-weight: 800;
+  }
+
+  .t-stat {
+    font-size: clamp(1.625rem, 2.4vw, 2.125rem);
+    line-height: 1.05;
+  }
+
+  .t-statement {
+    font-size: clamp(1.5rem, 2.6vw, 2.125rem);
+    line-height: 1.18;
+    font-weight: 700;
+  }
+
+  .t-h3 {
+    font-size: 1.25rem;
+    line-height: 1.25;
+    letter-spacing: -0.015em;
+  }
+
+  .t-lead {
+    font-size: 1.1875rem;
+    line-height: 1.55;
+  }
+
+  .t-small {
+    font-size: 0.875rem;
+    line-height: 1.5;
+  }
+
+  .t-label {
+    font-family: var(--font-text), ui-sans-serif, sans-serif;
+    font-weight: 700;
+    font-size: 0.6875rem;
+    line-height: 1.4;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.9rem 1.5rem;
+    background: var(--color-signal);
+    color: #fff;
+    font-family: var(--font-text), ui-sans-serif, sans-serif;
+    font-weight: 700;
+    font-size: 0.8125rem;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    border-radius: 999px;
+  }
+
+  .btn:hover {
+    background: var(--color-signal-soft);
+    color: var(--color-signal-ink);
+  }
+
+  .btn-dark {
+    background: var(--color-ink);
+    color: #fff;
+  }
+
+  .btn-dark:hover {
+    background: var(--color-ink-soft);
+    color: #fff;
+  }
+
+  summary {
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details[open] > summary .mais {
+    transform: rotate(45deg);
+  }
+}

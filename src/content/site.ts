@@ -15,11 +15,11 @@ export const site = {
     "Voo duplo de parapente com decolagem no Morro do Itararé, a minutos de Santos. A partir de R$ 400, com o piloto Montanha — vista do litoral paulista.",
 
   contact: {
-    whatsapp: "5513997657796",
+    whatsapp: "5511949202000",
     whatsappMessage:
       "Olá! Quero agendar um voo duplo com o Turismo Aventura Santos. Pode me passar os horários?",
-    phoneDisplay: "(13) 99765-7796",
-    phoneE164: "+5513997657796",
+    phoneDisplay: "(11) 94920-2000",
+    phoneE164: "+5511949202000",
     email: "montanha.voolivre@gmail.com",
   },
 

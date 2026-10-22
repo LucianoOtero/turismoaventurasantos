@@ -37,15 +37,17 @@ const etapas = [
   {
     titulo: "Voo",
     foto: etapaVoo,
-    alt: "Parapente amarelo em voo duplo, visto de baixo",
+    alt: "Piloto e passageira em voo duplo sobre o litoral",
     retrato: true,
+    objectPosition: "52% 48%",
     texto: `Você vai sentado e o instrutor pilota o tempo todo. São ${site.flight.durationLabel}, conforme as condições do dia, com vista para a orla de Santos e São Vicente e para a Baixada Santista.`,
   },
   {
     titulo: "Pouso",
     foto: etapaPouso,
-    alt: "Instrutor e passageiro com as pernas erguidas, na aproximação para o pouso",
+    alt: "Piloto e passageira na aproximação para o pouso",
     retrato: true,
+    objectPosition: "50% 45%",
     texto: `O pouso é na ${site.landing}.`,
   },
 ];
@@ -87,6 +89,11 @@ export default function ComoEOVoo() {
                 sizes="(min-width: 768px) 22rem, (min-width: 640px) 50vw, 100vw"
                 placeholder="blur"
                 className={`aspect-[3/4] w-full object-cover ${i === 3 ? "sm:order-last" : ""}`}
+                style={
+                  "objectPosition" in etapa && etapa.objectPosition
+                    ? { objectPosition: etapa.objectPosition }
+                    : undefined
+                }
               />
               {texto}
             </li>

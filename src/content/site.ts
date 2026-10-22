@@ -50,15 +50,15 @@ export const site = {
   },
 
   flight: {
-    durationLabel: "de 3 a 20 minutos",
+    durationLabel: "até 10 minutos",
     totalTimeLabel: "cerca de 1 hora, contando briefing e preparação",
   },
 
   limits: {
     maxWeightKg: 130,
-    minAge: 14,
+    minAge: 10,
     minorsRule:
-      "Menores de 18 anos voam acompanhados do responsável legal, que assina a autorização. Idade mínima: 14 anos, com documento.",
+      "Menores de 18 anos voam acompanhados do responsável legal, que assina a autorização. Idade mínima: 10 anos, com documento.",
     phoneRule: "Por segurança, não é permitido levar o celular no voo.",
     clothing:
       "Roupa confortável e tênis ou calçado com solado emborrachado. É proibido traje de banho e chinelo, sandália ou papete.",
@@ -103,7 +103,7 @@ export const site = {
       price: 550,
       includes: [
         "Tudo do Voo VIP",
-        "Fotos e vídeos do voo",
+        "Vídeo do voo",
         "Entrega digital",
       ],
     },
@@ -143,13 +143,13 @@ export const site = {
   ],
 
   safetyRules: [
-    "Idade mínima para Voo de Introdução: 14 anos, com apresentação de documento.",
+    "Idade mínima para Voo de Introdução: 10 anos, com apresentação de documento.",
     "É PROIBIDO trajes de banho (sunga, biquíni…) e calçados inadequados (chinelo, sandália, papete…).",
     "É OBRIGATÓRIO o uso de tênis ou calçado com solado emborrachado.",
-    "O voo tem duração de 3 a 20 minutos, conforme condições meteorológicas, momento da decolagem e movimento na rampa.",
+    "O voo tem duração de até 10 minutos, conforme condições meteorológicas, momento da decolagem e movimento na rampa.",
     "É PROIBIDO a prática de voo triplo (piloto + 2 passageiros).",
     "Nos voos de Introdução estão inclusos: taxa operacional do CVLLP, seguro (piloto e aluno passageiro), EQPS homologados e revisados, e piloto Experimente certificado.",
-    "O CVLLP não se responsabiliza por serviços de fotos e vídeos ofertados pelos pilotos.",
+    "O CVLLP não se responsabiliza por serviços de vídeo ofertados pelos pilotos.",
     "O CVLLP segue o RBAC 103 (ANAC) e a Lei Municipal 2656-A (PMSV).",
   ],
 } as const;
@@ -160,7 +160,7 @@ export const whatsappMensagens = {
   agendar: site.contact.whatsappMessage,
   hoje: "Olá! Dá voo de parapente hoje com o Turismo Aventura Santos?",
   vip: "Olá! Quero agendar o Voo VIP.",
-  premium: "Olá! Quero agendar o Voo Premium (com fotos e vídeos).",
+  premium: "Olá! Quero agendar o Voo Premium (com vídeo do voo).",
   "360": "Olá! Quero agendar o Voo 360º.",
 } as const;
 

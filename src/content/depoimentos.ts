@@ -9,7 +9,7 @@ export const depoimentos = [
   {
     nome: "Mariana Costa",
     texto:
-      "Realizei um sonho de infância! O voo foi tranquilo e seguro, e as fotos que fizeram durante o passeio ficaram espetaculares. Recomendo muito!",
+      "Realizei um sonho de infância! O voo foi tranquilo e seguro, e o vídeo que fizeram durante o passeio ficou espetacular. Recomendo muito!",
   },
   {
     nome: "Ana Paula Mendes",

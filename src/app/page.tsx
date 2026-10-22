@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { HeroPicture } from "@/components/hero-picture";
+import { HeroCarousel, type HeroSlide } from "@/components/hero-carousel";
 import { SiteFooter, SiteHeader, WhatsAppBar } from "@/components/site-chrome";
 import { depoimentos } from "@/content/depoimentos";
 import { duvidas, etapas, mapsUrl } from "@/content/home";
@@ -21,10 +21,47 @@ import galeria3 from "@/assets/fotos/galeria-3.jpeg";
 import galeria4 from "@/assets/fotos/galeria-4.jpeg";
 import galeria5 from "@/assets/fotos/galeria-5.jpeg";
 import galeria6 from "@/assets/fotos/galeria-6.jpeg";
-import heroRampa from "@/assets/fotos/hero-rampa.jpg";
-import heroRampaVertical from "@/assets/fotos/hero-rampa-vertical.jpg";
+import heroLaranja from "@/assets/fotos/hero-laranja.jpg";
+import heroLaranjaVertical from "@/assets/fotos/hero-laranja-vertical.jpg";
+import heroRampaCorrigida from "@/assets/fotos/hero-rampa-corrigida.jpg";
+import heroRampaCorrigidaVertical from "@/assets/fotos/hero-rampa-corrigida-vertical.jpg";
 import ilhaPraia from "@/assets/fotos/ilha-praia.jpg";
 import montanha from "@/assets/fotos/montanha.webp";
+
+// Só paisagens / voos inteiros — sem a rampa distorcida nem selfies que cortam o rosto.
+const heroSlides: HeroSlide[] = [
+  {
+    desktop: heroRampaCorrigida,
+    mobile: heroRampaCorrigidaVertical,
+    alt: "Rampa de voo livre no Morro do Itararé",
+    objectPosition: "72% 42%",
+  },
+  {
+    desktop: heroLaranja,
+    mobile: heroLaranjaVertical,
+    alt: "Parapente laranja em voo sobre Santos",
+    objectPosition: "35% 50%",
+  },
+  {
+    desktop: ilhaPraia,
+    mobile: ilhaPraia,
+    alt: "Ilha e praia vistas da rampa",
+    objectPosition: "50% 40%",
+  },
+  {
+    desktop: etapaDecolagem,
+    mobile: etapaDecolagem,
+    alt: "Parapente inflando na rampa para a decolagem",
+    objectPosition: "48% 75%",
+  },
+  {
+    desktop: galeria6,
+    mobile: galeria6,
+    alt: "Piloto e passageira em voo duplo",
+    // Rosto do piloto à esquerda, inteiro no quadro
+    objectPosition: "18% 32%",
+  },
+];
 
 export const revalidate = 86400;
 
@@ -54,13 +91,16 @@ const fotosEtapas = {
   },
   voo: {
     src: etapaVoo,
-    alt: "Parapente em voo duplo, visto de baixo",
+    alt: "Piloto e passageira em voo duplo sobre o litoral",
     moldura: molduras.retrato,
+    // Mantém o casal no centro em qualquer largura do object-cover
+    objectPosition: "52% 48%",
   },
   pouso: {
     src: etapaPouso,
-    alt: "Piloto e passageiro na aproximação para o pouso",
+    alt: "Piloto e passageira na aproximação para o pouso",
     moldura: molduras.retrato,
+    objectPosition: "50% 45%",
   },
 } as const;
 
@@ -77,7 +117,7 @@ export default function Home() {
   const { instructor } = site;
 
   const ficha = [
-    [site.flight.durationLabel.replace("de ", ""), "de voo, conforme o dia"],
+    [site.flight.durationLabel, "de voo, conforme o dia"],
     [`${site.limits.maxWeightKg} kg`, "peso máximo do passageiro"],
     [`${site.limits.minAge} anos`, "idade mínima, com documento"],
     [
@@ -105,11 +145,9 @@ export default function Home() {
       <main id="conteudo">
         <div className="relative bg-ink text-white md:flex md:min-h-[min(100svh,90rem)] md:flex-col">
           <section className="relative flex min-h-[min(100svh,54rem)] flex-col justify-end md:static md:min-h-0 md:flex-1">
-            <HeroPicture
-              mobile={heroRampaVertical}
-              desktop={heroRampa}
-              alt="Rampa de voo livre no Morro do Itararé"
-              className="absolute inset-0 h-full w-full object-cover object-center"
+            <HeroCarousel
+              slides={heroSlides}
+              className="absolute inset-0 h-full w-full object-cover"
             />
             {/* Overlay mais leve: legibilidade do texto sem “apagar” a foto */}
             <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-ink/10" />
@@ -144,13 +182,15 @@ export default function Home() {
           </section>
 
           <section aria-label="Ficha do voo" className="relative">
-            <ul className="mx-auto grid max-w-7xl grid-cols-2 border-t border-rule-inv px-5 md:grid-cols-5">
+            <ul className="@container mx-auto grid max-w-7xl grid-cols-2 border-t border-rule-inv px-5 md:grid-cols-5">
               {ficha.map(([valor, legenda]) => (
                 <li
                   key={legenda}
-                  className="border-b border-rule-inv py-6 pr-4 md:border-b-0 md:border-l md:py-7 md:pl-6 md:first:border-l-0 md:first:pl-0"
+                  className="border-b border-rule-inv py-6 pr-4 md:border-b-0 md:border-l md:py-7 md:px-3 md:first:border-l-0 md:first:pl-0 lg:px-5 lg:first:pl-0"
                 >
-                  <p className="t-stat">{valor}</p>
+                  <p className="t-stat md:whitespace-nowrap md:[font-size:clamp(0.8125rem,1.7cqi+0.35rem,2.125rem)]">
+                    {valor}
+                  </p>
                   <p className="t-small mt-2 text-white/70">{legenda}</p>
                 </li>
               ))}
@@ -197,6 +237,11 @@ export default function Home() {
                       sizes={foto.moldura.sizes}
                       placeholder="blur"
                       className={`w-full object-cover ${foto.moldura.img}`}
+                      style={
+                        "objectPosition" in foto && foto.objectPosition
+                          ? { objectPosition: foto.objectPosition }
+                          : undefined
+                      }
                     />
                     <h3 className="t-h3 mt-5">
                       <span className="text-signal">{i + 1}.</span>{" "}

@@ -38,7 +38,7 @@ export const etapas = [
   {
     id: "voo",
     titulo: "Voo",
-    texto: `São ${site.flight.durationLabel} com vista para a Baixada Santista.`,
+    texto: `O voo dura ${site.flight.durationLabel}, com vista para a Baixada Santista.`,
   },
   {
     id: "pouso",

@@ -42,8 +42,8 @@ export default function VooParapenteSantos() {
 
       <H2>Quanto custa</H2>
       <P>
-        A partir de {formatBRL(site.packages[0].price)}. Pacotes com fotos e
-        filmagem em HD ou 360º —{" "}
+        A partir de {formatBRL(site.packages[0].price)}. Pacotes com vídeo do
+        voo em HD ou filmagem 360º —{" "}
         <A href="/quanto-custa-voo-de-parapente">veja os preços</A> ou{" "}
         <A href="/precos">a página completa de pacotes</A>.
       </P>

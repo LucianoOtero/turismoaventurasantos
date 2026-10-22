@@ -5,12 +5,22 @@ type Props = {
   desktop: StaticImageData;
   alt: string;
   className?: string;
+  /** Só o primeiro slide do carrossel deve ter prioridade (LCP). */
+  priority?: boolean;
+  /** Enquadramento do object-cover, ex.: "70% 40%" para preservar rostos. */
+  objectPosition?: string;
 };
 
 // Direção de arte do hero: foto vertical em tela em pé (celular, tablet na
 // vertical), horizontal em tela deitada.
-// É a imagem de LCP, por isso carrega com prioridade.
-export function HeroPicture({ mobile, desktop, alt, className }: Props) {
+export function HeroPicture({
+  mobile,
+  desktop,
+  alt,
+  className,
+  priority = true,
+  objectPosition = "50% 40%",
+}: Props) {
   const common = { alt, sizes: "100vw" };
   const {
     props: { srcSet: desktopSrcSet },
@@ -26,10 +36,11 @@ export function HeroPicture({ mobile, desktop, alt, className }: Props) {
       <img
         {...rest}
         alt={alt}
-        loading="eager"
-        fetchPriority="high"
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "low"}
         decoding="async"
         className={className}
+        style={{ objectPosition }}
       />
     </picture>
   );

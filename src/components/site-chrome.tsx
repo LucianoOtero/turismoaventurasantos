@@ -18,17 +18,27 @@ export function SiteHeader({ variant }: { variant: "overlay" | "solid" }) {
       >
         Pular para o conteúdo
       </a>
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 py-4">
-        <Link href="/" className="flex items-center gap-3">
+      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-2.5 md:gap-6">
+        <Link href="/" className="flex items-center gap-3 md:gap-4">
+          {/*
+            Mesma escala do header do Voo Livre SV: h-16 / md:h-20 (64–80px)
+            no hero; nas páginas internas (solid) fica um pouco menor, como o
+            estado “scrolled” de lá (h-12 / md:h-14).
+          */}
           <Image
             src={logo}
             alt={site.name}
-            width={48}
-            height={48}
-            className="h-12 w-12 rounded-full object-cover ring-2 ring-white/40"
+            width={80}
+            height={80}
+            sizes="80px"
+            className={`w-auto rounded-full object-cover ring-2 ring-white/40 drop-shadow-[0_2px_6px_rgba(0,0,0,0.45)] ${
+              variant === "overlay"
+                ? "h-16 md:h-20"
+                : "h-12 md:h-14"
+            }`}
             priority
           />
-          <span className="font-[family-name:var(--font-display)] text-base font-extrabold tracking-tight min-[400px]:text-lg">
+          <span className="font-[family-name:var(--font-display)] text-base font-extrabold tracking-tight min-[400px]:text-lg md:text-xl">
             {site.name}
           </span>
         </Link>
